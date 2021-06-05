@@ -38,6 +38,30 @@ These screenshots were taken using the [Google Chrome Light Theme](https://addon
 
 A fix is being worked on, but until this message is removed, it  has not happened yet :(
 
+### Dark Themes
+
+In order to fix an issue with the title bar, the full URLbar was made white fix this in UserChrome by replacing 
+
+```css
+/* style address bar */
+#urlbar-background {
+    background-color: white !important;
+    border: none !important;
+/*     box-shadow: none !important; - Visual Diffrentiator*/
+}
+```
+
+with 
+
+```css
+/* style address bar */
+#urlbar-background {
+    background-color: transparent !important;
+    border: none !important;
+/*     box-shadow: none !important; - Visual Diffrentiator*/
+}
+```
+
 # Installation
 
 1. Download the file from Releases
