@@ -36,7 +36,18 @@ These screenshots were taken using the [Google Chrome Light Theme](https://addon
 
 ![Screen Shot 2021-06-04 at 8 12 29 PM](https://user-images.githubusercontent.com/19739712/120878449-068eca00-c5ac-11eb-8b17-0cf4c797c961.png)
 
-A fix is being worked on, but until this message is removed, it  has not happened yet :(
+#### The Fix
+
+In order to fix this, change the `--tab-corner-rounding` from `7px` to `0px`, and also follow the Dark Themes fix below.
+
+```css
+* { 
+/* -------------------- 🎨 Customization 🎨 -------------------- */
+    --tab-corner-rounding: 0px;
+    --button-corner-rounding: 4px;
+    --animation-speed: 0.15s;
+}
+```
 
 ### Dark Themes
 
@@ -61,6 +72,20 @@ with
 /*     box-shadow: none !important; - Visual Diffrentiator*/
 }
 ```
+
+### Themes that have a differnet Tab color from the bar
+
+Many themes such as the default light and dark ones, have a different tab color than the actual bar color, this messes up the theme and results in ugly colors like this:
+
+![image](https://user-images.githubusercontent.com/19739712/120882315-58444e00-c5c6-11eb-9167-ba1c4dc7f11e.png)
+
+For obvious reasons, themes need to have the same tab color as the bar color, as the two are visually connected!
+
+The recommended theme is [Google Chrome Light](https://addons.mozilla.org/en-US/firefox/addon/google-chrome-light/).
+
+### Accessibility
+
+Unfortunatly, much like Proton, this theme is not made with Accessibility and contrast in mind, and more just for beauty. Feel free to make edits, but right now the only solution is listed [here](https://www.mozilla.org/en-US/firefox/all/#product-desktop-esr)
 
 # Installation
 
