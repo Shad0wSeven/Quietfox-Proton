@@ -1,0 +1,494 @@
+/*
+
+-- Originally  by Coekuss --
+
+Quietfox for Firefox 76
+
+https://github.com/coekuss/quietfox
+
+Thanks for using my file
+
+-- Modified by Shad0w7 --
+
+Quietfox Remix for Firefox 89+
+
+https://github.com/Shad0wSeven/quietfox-proton
+ */
+
+* { 
+/* -------------------- 🎨 Customization 🎨 -------------------- */
+    --tab-corner-rounding: 7px;
+    --button-corner-rounding: 4px;
+    --animation-speed: 0.15s;
+}
+
+/* Hiding Icons */
+#tracking-protection-icon-box {
+    display: none;
+}
+
+#appMenu-fxa-separator
+{
+  border-image: unset !important;
+}
+
+
+#pageAction-urlbar-_testpilot-containers {
+    display: none;
+}
+
+#star-button {
+    display: none; 
+    /*  Bookmarks button - I don't use bookmarks, if you do, comment or delete these lines  */
+}
+
+/* Credit: Lepton, reduce padding in panels*/
+
+  :root {
+
+    /* Panel */
+    --arrowpanel-menuicon-padding: 8px;
+    --arrowpanel-menuitem-margin: 0 var(--arrowpanel-menuicon-padding) !important; /* Original: 0 8px */
+    --arrowpanel-menuitem-padding: 6px !important; /* Original: 8px (5 from lepton is too small for me, and I have a large screen, adjust this to change padding) */
+    --arrowpanel-padding:        0.8em !important; /* Original: 16px or .cui-widget-panel, .cui-widget-panel::part(arrowcontent) => 4px 0 */
+}
+
+  #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[first-visible-unpinned-tab] {
+    margin-inline-start: 2px !important; /* Small gap between pinned and unpinned tabs*/
+  }
+
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Bottom corner rounding for tabs, Remove this section if your tab bottom corners look bad */
+tab[visuallyselected] .tab-background::before,
+tab[visuallyselected] .tab-background::after {
+    content: "" !important;
+    display: inline !important;
+    position: absolute !important;
+    width: var(--tab-corner-rounding) !important;
+    height: var(--tab-corner-rounding) !important;
+    bottom: -1px !important;
+    pointer-events: none !important;
+    background-color: transparent !important;
+    transition: var(--animation-speed) !important;
+}
+
+tab[visuallyselected] .tab-background::before {
+    border-bottom-right-radius: var(--tab-corner-rounding) !important;
+    transform: translateX(calc(-1 * var(--tab-corner-rounding))) !important;
+    box-shadow: 4px 4px 0px 4px var(--toolbar-bgcolor) !important;
+    transition: var(--animation-speed) !important;
+}
+
+tab[visuallyselected] .tab-background::after {
+    border-bottom-left-radius: var(--tab-corner-rounding) !important;
+    right: 0px !important;
+    transform: translateX(calc(var(--tab-corner-rounding) + 1px)) !important;
+    box-shadow: -4px 4px 0px 4px var(--toolbar-bgcolor) !important;
+    transition: var(--animation-speed) !important;
+}
+/* --------------------------------------------------------------------------------------- */
+
+
+scrollbox {
+    margin-top: 5px
+}
+
+/* This makes certain menus adapt to your toolbar text color. Can make menu text illegible in 
+some transparent themes, remove if needed. */
+panelview:not([extension]),
+.panel-arrowcontent {
+    background-color: var(--toolbar-bgcolor) !important;
+    color: var(--toolbar-color) !important;
+}
+/*-------------------------------------------------------------------*/
+
+
+
+
+
+/* -------------------- Transitions for some things -------------------- */
+toolbarbutton,
+.subviewbutton,
+stack, 
+.toolbarbutton-icon,
+vbox
+{
+    transition: background-color var(--animation-speed) !important;
+
+} 
+
+
+
+
+/* -------------------- Style tab bar -------------------- */
+
+.titlebar-spacer[type="pre-tabs"] {
+    border-inline-end: 0px !important;
+    width: 0px !important;
+}
+
+scrollbox[part="scrollbox"][flex="1"][orient="horizontal"] {
+    padding-left: 12px !important;
+}
+
+
+[sizemode="maximized"] [first-visible-tab] {
+    margin-left: -12px !important;
+}
+
+[sizemode="maximized"] [first-visible-tab] stack {
+    margin-left: 12px !important;
+}
+
+.tab-background, .tab-loading-burst  {
+    border-radius: var(--tab-corner-rounding) var(--tab-corner-rounding) 0px 0px !important;
+    margin: -1px !important;
+    -moz-box-direction: reverse;
+}
+
+
+tab:not(:active) .tab-background {
+    transition: background-color var(--animation-speed) !important;
+}
+
+
+:root[uidensity="compact"] {
+    --tab-min-height: 31px !important;
+}
+
+tab:not([selected]):hover .tab-background {
+    background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+tab {
+    min-width: 1px !important;
+    clip-width: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+.tab-line {
+    display: none !important;
+}
+
+tab:not([beforeselected-visible])::after {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+    transition: border-color var(--animation-speed), margin-top var(--animation-speed) !important;
+
+}
+
+tab[beforehovered]::after,
+tab:hover::after {
+    border-color: transparent !important;
+    margin-top: 20px !important;
+}
+
+#navigator-toolbox {
+    --tabs-border-color: transparent !important;
+}
+
+
+
+tab[visuallyselected] .tab-background {
+        box-shadow: 0px 3px 15px -7px black !important;
+}
+
+[last-visible-tab] {
+    margin-right: calc(var(--tab-corner-rounding) + 2px) !important; /* fix unexpected tab overflow */
+}
+
+
+
+/* various */
+.urlbar-input-box,
+#identity-box, 
+#tracking-protection-icon-container,
+.urlbar-history-dropmarker, 
+.urlbar-page-action,
+#reader-mode-button, 
+[anonid=urlbar-go-button],
+.toolbarbutton-1 > stack,
+toolbarbutton:not(.titlebar-button):not([class^="findbar-find"]):not([class^="scrollbutton"]),
+.close-icon
+{
+    border-radius: var(--button-corner-rounding)!important;
+}
+
+
+.findbar-find-next {
+    border-radius: 0px var(--button-corner-rounding) var(--button-corner-rounding) 0px !important;
+}
+
+.findbar-textbox {
+    border-radius: var(--button-corner-rounding) 0px 0px var(--button-corner-rounding) !important;
+}
+
+
+
+#urlbar {
+    border-radius: calc(1px + var(--button-corner-rounding)) !important;
+    border: none !important;
+}
+
+/* style identity box */
+#identity-box {
+    margin-right: 0px !important;
+}
+
+
+/* style address bar */
+#urlbar-background {
+    background-color: white !important;
+    border: none !important;
+/*     box-shadow: none !important; - Visual Diffrentiator*/
+}
+
+
+/* This stuff only really works in 88 and below, very ugly in Proton */
+
+/* #urlbar[breakout-extend] {
+    top: 4px !important;
+    left: 0px !important;
+    padding: 0px 0px 0px 0px !important;
+    height: auto !important;
+    width: 100% !important;
+}
+
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+    height: var(--urlbar-toolbar-height) !important;
+    padding-block: 0px !important;
+    padding-inline: 0px !important;
+    padding-bottom: 6px !important;
+    margin-bottom: -5px !important;
+    margin-top: -1px !important;
+}
+ */
+/* urlbarView = the menu when you expand the address bar */
+/* .urlbarView {
+    width: 100% !important;
+    margin-inline: 0px !important;
+    box-shadow: 0px 5px 15px -7px black !important;
+    border-radius: 0px 0px var(--menu-corner-rounding) var(--menu-corner-rounding) !important;
+    border: none !important;
+    padding-top: 0px !important;
+}
+
+.urlbarView-body-inner {
+    border:none !important;    
+}
+
+.search-one-offs {
+    background-color: var(--toolbar-bgcolor) !important;
+}
+ */
+
+
+
+#tracking-protection-icon-container {
+    border-inline-end: none !important;
+}
+
+#pageActionSeparator {
+    display: none !important;
+}
+
+.urlbar-icon, #userContext-indicator, #userContext-label {
+    fill: transparent !important;
+    background-color: transparent !important;
+    color: transparent !important;
+    transition: var(--animation-speed) !important;
+}
+
+
+#urlbar:hover .urlbar-icon,
+#urlbar:active .urlbar-icon, 
+#urlbar[focused] .urlbar-icon {
+    fill: var(--toolbar-color) !important;
+}
+
+#urlbar:hover #userContext-indicator,
+#urlbar:active #userContext-indicator, 
+#urlbar[focused] #userContext-indicator,
+#urlbar:hover #userContext-label,
+#urlbar:active #userContext-label, 
+#urlbar[focused] #userContext-label {
+    color: var(--identity-tab-color) !important;
+    fill: var(--identity-tab-color) !important;
+}
+
+.urlbar-page-action[open] {
+    background-color: var(--toolbarbutton-active-background) !important;
+    fill: var(--toolbar-color) !important;
+}
+
+.urlbar-page-action[open]:hover {
+    background-color: var(--toolbarbutton-active-background) !important;
+    fill: var(--toolbar-color) !important;
+}
+
+.urlbar-page-action[open] .urlbar-icon {
+    fill: var(--toolbar-color) !important;
+}
+
+.urlbar-scheme {
+    padding-bottom: 11px !important;
+}
+
+
+#urlbar-container {
+    margin-left: -1px !important;
+    margin-right: -1px !important;
+}
+
+.urlbar-input-box {
+    padding: 0px 5px !important;
+}
+
+#urlbar {
+    background-color: transparent !important;
+    color: var(--lwt-toolbar-field-color, black) !important;
+}
+
+
+#urlbar:not(.hidden-focus)[focused="true"] {
+    background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+#pocket-button {
+    padding-bottom: 4px !important;
+}
+
+.urlbar-icon-wrapper > .urlbar-icon:hover {
+    background-color: transparent !important;
+}
+
+.urlbar-icon-wrapper {
+    background-color: transparent !important;
+    transition: background-color var(--animation-speed) !important;
+}
+
+
+
+#urlbar:not([focused]) .urlbar-input-box:hover,
+#identity-box:hover, 
+#tracking-protection-icon-container:hover,
+.urlbar-icon:hover,
+.urlbar-icon-wrapper:hover,
+[anonid=urlbar-go-button]:hover {
+    background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+
+#identity-box:active,
+#tracking-protection-icon-container:active,
+.urlbar-icon:active,
+.urlbar-icon-wrapper:active,
+[anonid=urlbar-go-button]:active {
+    background-color: var(--toolbarbutton-active-background) !important;
+}
+
+.urlbar-input-box, 
+#identity-box,
+#tracking-protection-icon-container,
+[anonid=urlbar-go-button],
+#urlbar {
+    transition: background-color var(--animation-speed) !important;
+}
+
+#tracking-protection-icon,
+#identity-box image {
+    transition: fill-opacity var(--animation-speed) !important;
+}
+
+[lwthemetextcolor="dark"] .urlbarView-body-outer {
+    background-color: #f5f6f7 !important;
+    color: var(--toolbar-color) !important;
+}
+
+.urlbarView-body-inner {
+    background-color: var(--toolbar-bgcolor) !important;
+}
+
+.downloadsPanelFooterButton:hover {
+    outline: none !important;
+}
+
+
+ /** Sound Tab - Show with Favicons ******************************************/
+  /* Makes the favicons always visible (also on hover) */
+  .tab-icon-image:not([pinned]){
+    opacity: 1 !important
+  }
+
+  /* Makes the speaker icon to always appear if the tab is playing (not only on hover) */
+  .tab-icon-overlay:not([crashed]),
+  .tab-icon-overlay[pinned][crashed][selected] {
+    /* Position */
+    top: -3.5px !important;
+    inset-inline-end: -9px !important;
+    z-index: 1 !important;
+
+    /* Shape */
+    padding: 1.5px !important;
+    border-radius: 10px !important;
+    width:  17px !important;
+    height: 17px !important;
+  }
+  .tab-icon-overlay:not([sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+    /* Color */
+    color:  currentColor !important;
+    stroke: transparent !important;
+    background: transparent !important;
+    fill-opacity: 0.8 !important;
+    opacity: 1 !important;
+  }
+  .tab-icon-overlay:not([pinned], [sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+    margin-inline-end: 9.5px !important;
+  }
+
+  /* None exist favicon */
+  .tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing],[crashed]) {
+    top: 0 !important;
+    inset-inline-end: 0 !important;
+    margin-inline-end: 5.5px !important;
+    padding: 2px 0 !important;
+  }
+
+  /* Busy - Show */
+  .tab-throbber[busy], .tab-icon-pending[busy] {
+    opacity: 1 !important;
+  }
+
+  /* Busy - Overlay Position */
+  .tabbrowser-tab:not([pinned])[busy] .tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]) {
+    transform: translateX(-.5px) translateY(-2.5px);
+  }
+  .tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing],[crashed])[busy] {
+    top: -3.5px !important;
+    inset-inline-end: -9px !important;
+    margin-inline-end: 9.5px !important;
+    padding: 1.5px !important;
+  }
+
+  /* Hover */
+  .tab-icon-overlay:not([crashed])[soundplaying]:hover,
+  .tab-icon-overlay:not([crashed])[muted]:hover,
+  .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
+    color:  var(--toolbar-bgcolor, white) !important;
+    stroke: var(--lwt-tab-text, var(--toolbar-color)) !important;
+    background-color: var(--lwt-tab-text, var(--toolbar-color)) !important;
+    fill-opacity: 0.95 !important;
+  }
+
+  #TabsToolbar[brighttext] .tab-icon-overlay:not([crashed])[soundplaying]:hover,
+  #TabsToolbar[brighttext] .tab-icon-overlay:not([crashed])[muted]:hover,
+  #TabsToolbar[brighttext] .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
+    color: var(--toolbar-bgcolor, black) !important;
+  }
+
+  .tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing],[crashed]):hover {
+    padding: 0 !important;
+  }
+
