@@ -26,10 +26,6 @@ This theme was designed with Compact mode in mind, although Normal and Touch den
 
 ## Known Issues
 
-### UNTESTED ON WINDOWS!!!
-
-This theme is untested on Windows (I only have MacOS and Linux), if you encounter any errors, please open an issue!
-
 ### Transparent Themes
 
 These screenshots were taken using the [Google Chrome Light Theme](https://addons.mozilla.org/en-US/firefox/addon/google-chrome-light/) theme, transparent themes such as Alpenglow look really bad:
@@ -93,5 +89,8 @@ Unfortunatly, much like Proton, this theme is not made with Accessibility and co
 2. [Create a Chrome Folder](https://www.userchrome.org/how-create-userchrome-css.html)
 3. Use the UserChrome from Releases rather than creating a new one.
 4. Modify and Hack away!
+
+## Tested on Firefox 89 Release and Nightly on macOS, if you find issues on Windows or Linux please open an issue in GitHub!
+
 
 Made with ❤️
