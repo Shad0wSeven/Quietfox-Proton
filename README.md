@@ -5,9 +5,9 @@ Quietfox release for Proton, upgrades and improvments from myself, and from the 
 
 ## Designed to make Firefox feel better once again.
 
-After proton, things broke, themes were lost, and tons of bad stuff happened. Thankfully, the quietfox theme was honestly minimally affected, and I decided to adapt it to use with my own system.
+After proton, things broke, themes were lost, and tons of bad stuff happened. Thankfully, I fixed my favorite theme.
 
-This theme was designed with Compact mode in mind, although Normal and Touch density can still be used.
+This theme was designed with Compact mode in mind, although Normal and Touch density can still be used. (If you're a masochist)
 
 ## Features and Screenshots
 
@@ -30,7 +30,7 @@ This theme was designed with Compact mode in mind, although Normal and Touch den
 
 Transparent themes such as Alpenglow look really bad:
 
-![Screen Shot 2021-06-04 at 8 12 29 PM](https://user-images.githubusercontent.com/19739712/120878449-068eca00-c5ac-11eb-8b17-0cf4c797c961.png)
+![image](https://user-images.githubusercontent.com/19739712/143723977-9b218a99-a501-4b89-b408-75850a638f86.png)
 
 Unfortunatly, I can't find a way to fix this for now, although look for it in an upcoming release :/
 
