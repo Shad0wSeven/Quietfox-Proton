@@ -28,60 +28,17 @@ This theme was designed with Compact mode in mind, although Normal and Touch den
 
 ### Transparent Themes
 
-These screenshots were taken using the [Google Chrome Light Theme](https://addons.mozilla.org/en-US/firefox/addon/google-chrome-light/) theme, transparent themes such as Alpenglow look really bad:
+Transparent themes such as Alpenglow look really bad:
 
 ![Screen Shot 2021-06-04 at 8 12 29 PM](https://user-images.githubusercontent.com/19739712/120878449-068eca00-c5ac-11eb-8b17-0cf4c797c961.png)
 
-#### The Fix
+Unfortunatly, I can't find a way to fix this for now, although look for it in an upcoming release :/
 
-In order to fix this, change the `--tab-corner-rounding` from `7px` to `0px`, and also follow the Dark Themes fix below.
 
-```css
-* { 
-/* -------------------- 🎨 Customization 🎨 -------------------- */
-    --tab-corner-rounding: 0px;
-    --button-corner-rounding: 4px;
-    --animation-speed: 0.15s;
-}
-```
+### Dark Themes and Themes that have a differnet Tab color from the bar
 
-### Dark Themes
+Check Releases, and look at [v1.1](https://github.com/Shad0wSeven/Quietfox-Proton/releases/tag/1.1-alpha)!
 
-In order to fix an issue with the title bar, the full URLbar was made white fix this in UserChrome by replacing 
-
-```css
-/* style address bar */
-#urlbar-background {
-    background-color: white !important;
-    border: none !important;
-/*     box-shadow: none !important; - Visual Diffrentiator*/
-}
-```
-
-with 
-
-```css
-/* style address bar */
-#urlbar-background {
-    background-color: transparent !important;
-    border: none !important;
-/*     box-shadow: none !important; - Visual Diffrentiator*/
-}
-```
-
-### Themes that have a differnet Tab color from the bar
-
-Many themes such as the default light and dark ones, have a different tab color than the actual bar color, this messes up the theme and results in ugly colors like this:
-
-![image](https://user-images.githubusercontent.com/19739712/120882315-58444e00-c5c6-11eb-9167-ba1c4dc7f11e.png)
-
-For obvious reasons, themes need to have the same tab color as the bar color, as the two are visually connected!
-
-The recommended theme is [Google Chrome Light](https://addons.mozilla.org/en-US/firefox/addon/google-chrome-light/).
-
-### Accessibility
-
-Unfortunatly, much like Proton, this theme is not made with Accessibility and contrast in mind, and more just for beauty. Feel free to make edits, but right now the only solution is listed [here](https://www.mozilla.org/en-US/firefox/all/#product-desktop-esr)
 
 # Installation
 
@@ -90,7 +47,7 @@ Unfortunatly, much like Proton, this theme is not made with Accessibility and co
 3. Use the UserChrome from Releases rather than creating a new one.
 4. Modify and Hack away!
 
-## Tested on Firefox 89 Release and Nightly on macOS, if you find issues on Windows or Linux please open an issue in GitHub!
+## Tested on Firefox 89-95 Release and Developer on macOS, if you find issues on Windows or Linux please open an issue in GitHub!
 
 
 Made with ❤️
